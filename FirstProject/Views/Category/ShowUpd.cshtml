@@ -1,0 +1,20 @@
+﻿@model FirstProject.Models.db.Category;
+@{
+    ViewData["Title"] = "ShowUpd";
+}
+
+<h1>ShowUpd</h1>
+<form method="post" asp-controller="Category" asp-action="UpdDB">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="CategoryId" />
+    <div class="form-group">
+        <label asp-for="CategoryName" class="control-label"></label>
+        <input asp-for="CategoryName" class="form-control"/>
+        <span asp-validation-for="CategoryName" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="return confirm('Do you want to update ?')">Save</button>
+    <button type="reset" class="btn btn-secondary">Cancel</button>
+</form>
+<div>
+    <a asp-action="Index">Back to Main</a>
+</div>

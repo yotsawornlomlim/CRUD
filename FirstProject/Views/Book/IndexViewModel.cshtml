@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BasicCRUD.ViewModels.BookCategoryPublisherViewModel>
+@{
+	ViewData["Title"] = "รายการหนังสือ";
+}
+
+<h1>รายการหนังสือ</h1>
+<p class="btn btn-outline-success mt-2">
+	<a asp-action="Create">เพื่มรายการหนังสือ</a>
+</p>
+
+<table class="table table-responsive">
+	<thead class="bg-dark text-white"
+		<tr>
+			<th>ชื่อหนังสือ</th>
+			<th>ประเภทหนังสือ</th>
+			<th>สำนักพิมพ์</th>
+			<th>ISBN</th>
+			<th>ต้นทุน</th>
+			<th>ราคาขาย</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.BookName</td>
+				<td>@item.CategoryName</td>
+				<td>@item.PublishName</td>
+				<td>@item.Isbn</td>
+				<td>@item.BookCost</td>
+				<td>@item.BookPrice</td>
+				<td>
+					<div class="d-grid gap-1 d-sm-flex justify-content-sm-end">
+						<a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.BookId">แก้ไข</a>
+						<a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.BookId">รายละเอียด</a>
+						<a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.BookId">ลบ</a>
+					</div>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

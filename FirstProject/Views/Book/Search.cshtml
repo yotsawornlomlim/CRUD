@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BasicCRUD.ViewModels.BookCategoryPublisherViewModel>
+
+@{
+    ViewData["Title"] = "รายการหนังสือ";
+}
+
+<h1>รายการหนังสือที่ค้นหา</h1>
+<div class="d-flex justify-content-center mt-3 mb-3">
+    @* <form asp-controller="Books" asp-action="Search"> *@
+    @*     <span class="btn-group d-flex"> *@
+    @*         <input class="form-control" name="q" placeholder="ค้นหาชื่อหนังสือ..." /> *@
+    @*         <button class="btn btn-primary ml-1" type="submit">ค้นหา</button> *@
+    @*     </span> *@
+    @* </form> *@
+</div>
+@foreach (var Model in Model)
+{
+    <div class="card-header border border-dark">
+        <h2>@Model.BookName</h2>
+        <span class="badge bg-danger">
+            @Model.CategoryName
+        </span>
+    </div>
+
+    <div class="card-body">
+        <p class="card-text">
+            @Model.PublishName <br />
+            @Model.Isbn <br />
+            @Model.BookCost <br />
+            @Model.BookPrice
+        </p>
+    </div>
+
+    <div class="card-footer text-muted">
+        <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model.BookId">แก้ไข</a>
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.BookId">ลบ</a>
+        <a class="btn btn-outline-dark" asp-action="IndexViewModel">รายการ</a>
+    </div>
+}

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<FirstProject.Models.db.Publish>
+
+@{
+    ViewData["Title"] = "index";
+}
+
+<h1>index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@if(Model.Count()<=0)
+{
+    <div class="alert alert-danger">No Data Found</div>
+}
+else
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PublishId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PublishId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PublishId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}

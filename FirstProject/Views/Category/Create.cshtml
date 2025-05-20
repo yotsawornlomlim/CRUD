@@ -1,0 +1,16 @@
+﻿@model FirstProject.Models.db.Category;
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<form method="post" asp-controller="Category" asp-action="Create">
+	<div>
+		<label asp-for="CategoryName"></label>
+		<input type="text" asp-for="CategoryName" class="from-control"/>
+		<span asp-validation-for="CategoryName" class="text-danger"></span>
+	</div>
+    <button type="submit" class="btn btn-primary">Save</button>
+	<button type="reset" class="btn btn-secondary">Cancle</button>
+</form>
+
