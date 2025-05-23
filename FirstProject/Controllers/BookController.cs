@@ -98,9 +98,10 @@ namespace FirstProject.Controllers
                 ViewData["PublishId"] = new SelectList(_dbContext.Publishes, "PublishId", "PublishName");
                 return View(b);
             }
+            b.BookId = Guid.NewGuid().ToString();
             _dbContext.Books.Add(b);
             await _dbContext.SaveChangesAsync();    
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexViewModel");
         }
 
         // GET: BookController/Edit/5
